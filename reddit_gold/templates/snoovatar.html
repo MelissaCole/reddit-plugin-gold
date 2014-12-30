@@ -64,6 +64,13 @@ ${less_stylesheet('gold.less')}
       <div class="username">${thing.username}</div>
     %endif
     <p>${_md('view and discuss snoovatars in /r/snoovatars')}</p>
+    <p>
+      %if c.user.gold and c.user.name != thing.username:
+        ${_md('create your own snoovatar [here](/user/%(username)s/snoo)' % dict(username=c.user.name))}
+      %elif not c.user.gold:
+        ${_md('create your own snoovatar with [reddit gold](http://www.reddit.com/gold?source=snoovatar)')}
+      %endif
+    </p>
   </div>
 </div>
 
